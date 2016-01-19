@@ -1,0 +1,50 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+###################################################################
+# added for stable ssh in
+auto eth2
+allow-hotplug eth2
+iface eth2 inet dhcp
+
+###################################################################
+# Switch
+auto eth0
+allow-hotplug eth0
+iface eth0 inet static
+	address 192.168.2.1
+	netmask 255.255.255.0
+	broadcast 192.168.2.255
+	gateway 192.168.2.1
+	network 192.168.2.0
+
+###################################################################
+## Access point (nathan_explosion)
+auto eth1.2
+iface eth1.2 inet static
+	address 192.168.1.1
+	netmask 255.255.255.0
+	broadcast 192.168.1.255
+	gateway 192.168.1.1
+	network 192.168.1.0
+	vlan-raw-device eth1
+
+# Access point (livemusic)
+auto eth1.3
+iface eth1.3 inet static
+	address 192.168.3.1
+	netmask 255.255.255.0
+	broadcast 192.168.3.255
+	gateway 192.168.3.1
+	network 192.168.3.0
+	vlan-raw-device eth1
+
+# Access point
+#auto eth1
+#allow-hotplug eth1
